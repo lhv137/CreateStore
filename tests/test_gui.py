@@ -15,40 +15,39 @@ from tkinter import messagebox
 # tkWindow.geometry('400x150')  
 # tkWindow.title('PythonExamples.org - Tkinter Example')
 root = tk.Tk()
-canvas1 = tk.Canvas(root, width = 800, height = 300)
+canvas1 = tk.Canvas(root, width = 400, height = 400)
 canvas1.pack()
-label1 = tk.Label(root, text='Graphical User Interface')
-label1.config(font=('Arial', 20))
-canvas1.create_window(400, 50, window=label1)
 
+label0 = tk.Label(root, text='Test Add Store')
+label0.config(font=('Arial', 20))
+canvas1.create_window(200, 30, window=label0)
 
-# fillNumber = tk.Entry(root)
-# canvas1.create_window(400, 100, window=fillNumber) 
+label1 = tk.Label(root, text='Fill number of Store:')
+canvas1.create_window(100, 200, window=label1)
 
-entry1 = tk.Entry (root)
-canvas1.create_window(400, 100, window=entry1) 
+entry1 = tk.Entry (root,width=30)
+canvas1.create_window(250, 200, window=entry1) 
+
+label2 = tk.Label(root, text='Fill Gmail:')
+canvas1.create_window(100, 100, window=label2)
+
+entry2 = tk.Entry (root,width=30)
+canvas1.create_window(250, 100, window=entry2) 
+
+label3 = tk.Label(root, text='Fill Pass:')
+canvas1.create_window(100, 150, window=label3)
+
+entry3 = tk.Entry (root,width=30)
+canvas1.create_window(250, 150, window=entry3) 
+
   
-# @pytest.fixture
-
-# def browser():
-
-#     driver = Chrome(executable_path= r"C:\Users\PC\Desktop\Document\Driver\chromedriver.exe")
-#     driver.maximize_window()
-
-#     # driver.implicitly_wait(10)
-
-#     # yield driver
-    
-#     # driver.quit()
-
 def showMsg():  
 
-    email = 'hoangvidct1@gmail.com'
-    password = 'vole132465798'
+    email = entry2.get()
+    password = entry3.get()
     browser = Chrome(executable_path= r"C:\Users\PC\Desktop\Document\Driver\chromedriver.exe")
     browser.maximize_window()
     count = 0
-    repeat = entry1.get()
 
     # messagebox.showinfo('Message', 'You clicked the Submit button!')
 
@@ -87,7 +86,9 @@ def showMsg():
 
     sleep(3)
 
-    for count in range (entry1.get()):
+    repeat = int(entry1.get())
+
+    for count in range (repeat):
         value = ['offers', 'offer','OFFER', 'OFFERS']
         city = ['HP', 'HN', 'SG', 'NY','MA']
         zipcode = ['5500000', '9810423','5454212','65456213','21321311']
@@ -150,49 +151,41 @@ def showMsg():
 
         # browser.close()
 
-        shopify_page.fill_value_search(random.choice(value))
+        # shopify_page.fill_value_search(random.choice(value))
 
-        sleep(3)
+        # sleep(3)
 
-        shopify_page.search_app()
+        # shopify_page.search_app()
 
-        sleep(5)
+        # sleep(5)
 
-        shopify_page.select_app()
+        # shopify_page.select_app()
 
-        sleep(5)
+        # sleep(5)
 
-        shopify_page.add_app_sale()
+        # shopify_page.add_app_sale()
 
-        sleep(5)
+        # sleep(5)
 
-        shopify_page.install_app()
+        # shopify_page.install_app()
 
-        sleep(5)
+        # sleep(5)
 
-        shopify_page.select_charge()
+        # shopify_page.select_charge()
 
-        sleep(5)
+        # sleep(5)
 
-        shopify_page.charge()
+        # shopify_page.charge()
 
-        sleep(10)
+        # sleep(10)
 
-        assert 'Dashboard | Sales Box' == browser.title, "Title Failed"
+        # assert 'Dashboard | Sales Box' == browser.title, "Title Failed"
 
         browser.close()
 
         browser.switch_to.window(browser.window_handles[0])
 
         sleep(3)
-
-        # browser.close()
-
-        # browser.execute_script("window.history.go(-1)")
-
-        # browser.back()
-
-        # sleep(5)
         
         shopify_page = LoginShopify(browser)
 
@@ -204,25 +197,22 @@ def showMsg():
 
         count = count + 1
 
-        if (count > entry1.get()):
+        if (count > repeat):
             print("Passed with" + repeat + "times added!!!")
 
-        browser.quit()
+    browser.quit()
 
 def showValue():
-    repeat = entry1.get()
-    label3 = tk.Label(root, text= 'The Square Root of is:' + repeat,font=('helvetica', 10))
-    canvas1.create_window(200, 210, window=label3)
+    repeats = entry1.get()
+    label3 = tk.Label(root, text= 'The Square Root of is:' +repeats,font=('helvetica', 10))
+    canvas1.create_window(200, 250, window=label3)
 
-# button = tk.Button(
-# 	text = 'Submit',
-# 	command = showMsg)  
-# canvas1.create_window(200, 180, window=button)
-
- 
 button1 = tk.Button (root, text=' Run Script ',command=showMsg, bg='palegreen2', font=('Arial', 11, 'bold')) 
-canvas1.create_window(400, 180, window=button1)
-button2 = tk.Button (root, text=' Run Text ',command=showValue, bg='palegreen2', font=('Arial', 11, 'bold')) 
-canvas1.create_window(400, 220, window=button2)
+canvas1.create_window(220, 250, window=button1)
+
+# button2 = tk.Button (root, text=' Run Text ',command=showValue, bg='palegreen2', font=('Arial', 11, 'bold')) 
+# canvas1.create_window(250, 300, window=button2)
+
 # button2.pack() 
+
 root.mainloop()
