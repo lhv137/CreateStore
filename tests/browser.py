@@ -11,7 +11,6 @@ from time import sleep
 def browser():
 
     driver = Chrome(executable_path= r"C:\Users\PC\Desktop\Document\Driver\chromedriver.exe")
-
     driver.maximize_window()
 
     driver.implicitly_wait(10)

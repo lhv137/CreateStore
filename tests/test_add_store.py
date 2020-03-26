@@ -1,29 +1,36 @@
 import pytest
 import random
 import time
+from datetime import datetime
 from pages.shopify_page import LoginShopify
+from tests.browser import browser
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
-from tests.browser import browser
 from pages import *
 
 
 # # Add new Store
-def test_login_shopify_partner(browser):
 
+def test_login_shopify_partner(browser):
+ 
+    
     email = 'hoangvidct1@gmail.com'
     password = 'vole132465798'
-    city = ['HP', 'HN', 'SG', 'NY']
-    zipcode = ['5500000', '9810423','5454212']
+    city = ['HP', 'HN', 'SG', 'NY','MA']
+    zipcode = ['5500000', '9810423','5454212','65456213','21321311']
     value = ['offers', 'offer','OFFER', 'OFFERS']
-    rnd_value = str(random.randint(1, 100))
-    time_str = str(round(time.time() * 1000))
-    name_store = "test-store-dev-" + rnd_value + time_str
+    rnd_value = str(random.randint(1, 100000))
+    # time_str = str(round(time.time() * 1000))
+    today = datetime.now()
+    time_str = today.strftime("%d%m%Y%H%M%S")
+    name_store = "test-store-dev-" + rnd_value +"-"+ time_str
     rnd_add = str(random.randint(1,300))
-    address = ['ABC street','CEF Street', 'FGH Street']
+    address = ['ABC street','CEF Street', 'FGH Street','IJK Street', 'AKG Street']
+
+
     shopify_page = LoginShopify(browser)
-    
+
     sleep(3)
 
     shopify_page.load()
@@ -47,7 +54,7 @@ def test_login_shopify_partner(browser):
     shopify_page.click_btn_log_in()
 
     sleep(3)
-
+    
     shopify_page.go_to_store()
 
     sleep(2)
@@ -132,11 +139,7 @@ def test_login_shopify_partner(browser):
 
     assert 'Dashboard | Sales Box' == browser.title, "Title Failed"
 
-    # browser.quit()
-
-
-
-
+    browser.quit()
 
 
 

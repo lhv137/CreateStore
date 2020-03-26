@@ -1,16 +1,13 @@
 import pytest
 import random
 import time
-from pages.shopify_page import LoginShopify
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
-from pages import *
 
 
-@pytest.fixture
 
-def browser():
+def test_login_shopify_partner():
 
     driver = Chrome(executable_path= r"C:\Users\PC\Desktop\Document\Driver\chromedriver.exe")
 
@@ -20,18 +17,21 @@ def browser():
 
     yield driver
     
-    # driver.quit()
+    driver.quit()
 
-# # Add new Store
-# error = True
-def test_login_shopify_partner(browser):
-
+    # messagebox.showinfo('Message', 'You clicked the Submit button!')
     value = ['offers', 'offer','OFFER', 'OFFERS']
+    driver.get("https://apps.shopify.com/")
 
-    browser.get("https://apps.shopify.com/")
+    driver.find_element_by_xpath('//*[@id="ui-app-store-hero__home-search"]/label').send_keys(random.choice(value))
 
-    browser.find_element_by_xpath('//*[@id="ui-app-store-hero__home-search"]/label').send_keys(random.choice(value))
+    driver.find_element_by_xpath('//*[@id="ui-app-store-hero__home-search"]/button').click()
 
-    browser.find_element_by_xpath('//*[@id="ui-app-store-hero__home-search"]/button').click()
+    driver.find_element_by_xpath('//*[@title="Go to Sales Box ‑ Shipping & Offers"]').click()
 
-    browser.find_element_by_xpath('//*[@title="Go to Sales Box ‑ Shipping & Offers"]').click()
+    driver.quit()
+
+
+        
+
+        

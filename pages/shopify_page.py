@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 from pages.locators import *
 
@@ -167,3 +168,19 @@ class LoginShopify:
     def store_login_select(self):
         btn_login_stote = self.browser.find_element(*self.btn_login_stote)
         btn_login_stote.click()
+
+    # def clear_cache(self, timeout=60):
+    #     # navigate to the settings page
+    #     self.browser('chrome://settings/clearBrowserData')
+
+    #     get_clear_cache = self.browser.find_element_by_css_selector('* /deep/ #clearBrowsingDataConfirm')
+
+    #     # wait for the button to appear
+    #     wait = WebDriverWait(self, timeout)
+    #     wait.until(get_clear_cache)
+
+    #     # click the button to clear the cache
+    #     get_clear_cache(self).click()
+
+    #     # wait for the button to be gone before returning
+    #     wait.until_not(get_clear_cache)
